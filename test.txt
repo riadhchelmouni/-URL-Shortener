@@ -1,0 +1,25 @@
+go mod init url-shortener
+go get github.com/mattn/go-sqlite3
+
+
+sqlite3 urlshortener.db
+
+CREATE TABLE urls (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    original_url TEXT NOT NULL,
+    short_url TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    click_count INTEGER DEFAULT 0
+);
+.exit
+
+
+go run main.go
+Server started at http://localhost:8080
+
+
+go-url-shortener/
+├── go.mod
+├── go.sum
+├── main.go
+├── urlshortener.db
